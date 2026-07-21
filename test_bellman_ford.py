@@ -1,5 +1,5 @@
-from graph import Graph
-from bellman_ford import bellman_ford
+from task2.graph import Graph
+from task2.bellman_ford import bellman_ford
 
 g = Graph()
 

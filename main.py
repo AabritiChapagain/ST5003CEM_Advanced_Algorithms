@@ -1,9 +1,9 @@
 from city import City
-from bst import BinarySearchTree
-from avl import AVLTree
-from hash_table import HashTable
-from min_heap import MinHeap
-from benchmark import benchmark_search
+
+from task1.bst import BinarySearchTree
+from task1.avl import AVLTree
+from task1.hash_table import HashTable
+from task1.min_heap import MinHeap
 
 def main():
 
@@ -89,26 +89,6 @@ def main():
 
     if nearest:
         print(nearest)
-    print("\n==========================")
-    print("Benchmark Results")
-    print("==========================")
-
-    benchmark_search(
-        "Binary Search Tree",
-        bst.search,
-        "Pokhara"
-    )
-
-    benchmark_search(
-        "AVL Tree",
-        avl.search,
-        "Pokhara"
-    )
-
-    benchmark_search(
-        "Hash Table",
-        hash_table.search,
-        "Pokhara"
-    )
+   
 if __name__ == "__main__":
     main()

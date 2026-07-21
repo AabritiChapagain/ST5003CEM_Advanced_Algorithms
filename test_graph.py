@@ -1,4 +1,4 @@
-from graph import Graph
+from task2.graph import Graph
 
 g = Graph()
 

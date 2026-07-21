@@ -1,5 +1,5 @@
-from graph import Graph
-from prim import prim
+from task2.graph import Graph
+from task2.prim import prim
 
 g = Graph()
 

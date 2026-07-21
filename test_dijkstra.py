@@ -1,6 +1,5 @@
-from graph import Graph
-from dijkstra import dijkstra
-
+from task2.graph import Graph
+from task2.dijkstra import dijkstra
 g = Graph()
 
 g.add_road("Kathmandu", "Pokhara", 200)

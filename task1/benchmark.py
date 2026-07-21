@@ -1,11 +1,10 @@
 import csv
 import time
-
+from task1.bst import BinarySearchTree
+from task1.avl import AVLTree
+from task1.hash_table import HashTable
+from task1.min_heap import MinHeap
 from city import City
-from bst import BinarySearchTree
-from avl import AVLTree
-from hash_table import HashTable
-from min_heap import MinHeap
 
 
 def load_dataset(filename):
