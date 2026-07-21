@@ -75,43 +75,36 @@ class BinarySearchTree:
             self._inorder_recursive(current_node.left)
             print(current_node.city)
             self._inorder_recursive(current_node.right)
-def delete(self, city_name):
-    """Delete a city from the BST."""
-    self.root = self._delete_recursive(self.root, city_name)
-def _delete_recursive(self, node, city_name):
+    def delete(self, city_name):
+        """Delete a city from the BST."""
+        self.root = self._delete_recursive(self.root, city_name)
+    def _delete_recursive(self, node, city_name):
+        
+        if node is None:
+            return node
+        if city_name < node.city.name:
+            node.left = self._delete_recursive(node.left, city_name)
+        elif city_name > node.city.name:
+            node.right = self._delete_recursive(node.right, city_name)
+        else:
+            # Case 1 & 2
+            if node.left is None:
+                return node.right
 
-    if node is None:
+            if node.right is None:
+                return node.left
+
+            # Case 3
+            successor = self._find_min(node.right)
+            node.city = successor.city
+            node.right = self._delete_recursive(
+                node.right,
+                successor.city.name
+            )
         return node
 
-    if city_name < node.city.name:
-        node.left = self._delete_recursive(node.left, city_name)
-
-    elif city_name > node.city.name:
-        node.right = self._delete_recursive(node.right, city_name)
-
-    else:
-
-        # Case 1 & 2
-        if node.left is None:
-            return node.right
-
-        if node.right is None:
-            return node.left
-
-        # Case 3
-        successor = self._find_min(node.right)
-        node.city = successor.city
-        node.right = self._delete_recursive(
-            node.right,
-            successor.city.name
-        )
-
-    return node
-def _find_min(self, node):
-
-    current = node
-
-    while current.left is not None:
-        current = current.left
-
-    return current
+    def _find_min(self, node):
+        current = node
+        while current.left is not None:
+            current = current.left
+        return current
