@@ -142,3 +142,75 @@ class AVLTree:
             return self._search_recursive(node.left, city_name)
 
         return self._search_recursive(node.right, city_name)
+    def delete(self, city_name):
+        """
+        Delete a city from the AVL Tree.
+        """
+        self.root = self._delete_recursive(self.root, city_name)
+
+    def _delete_recursive(self, node, city_name):
+
+        if node is None:
+            return node
+
+        if city_name < node.city.name:
+            node.left = self._delete_recursive(node.left, city_name)
+
+        elif city_name > node.city.name:
+            node.right = self._delete_recursive(node.right, city_name)
+
+        else:
+
+            # Node with one or no child
+            if node.left is None:
+                return node.right
+
+            if node.right is None:
+                return node.left
+
+            # Node with two children
+            successor = self._find_min(node.right)
+
+            node.city = successor.city
+
+            node.right = self._delete_recursive(
+                node.right,
+                successor.city.name
+            )
+
+        # Update height
+        node.height = 1 + max(
+            self.get_height(node.left),
+            self.get_height(node.right)
+        )
+
+        # Check balance
+        balance = self.get_balance(node)
+
+        # Left Left
+        if balance > 1 and self.get_balance(node.left) >= 0:
+            return self.right_rotate(node)
+
+        # Left Right
+        if balance > 1 and self.get_balance(node.left) < 0:
+            node.left = self.left_rotate(node.left)
+            return self.right_rotate(node)
+
+        # Right Right
+        if balance < -1 and self.get_balance(node.right) <= 0:
+            return self.left_rotate(node)
+
+        # Right Left
+        if balance < -1 and self.get_balance(node.right) > 0:
+            node.right = self.right_rotate(node.right)
+            return self.left_rotate(node)
+
+        return node
+
+    def _find_min(self, node):
+        current = node
+
+        while current.left is not None:
+            current = current.left
+
+        return current

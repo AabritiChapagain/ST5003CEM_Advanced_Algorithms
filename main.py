@@ -47,6 +47,14 @@ def main():
         print(result)
     else:
         print("City not found.")
+    
+        print("\nDeleting Pokhara from AVL Tree...\n")
+
+    avl.delete("Pokhara")
+
+    print("AVL after deletion:")
+
+    avl.inorder_traversal()
 
 
 if __name__ == "__main__":
