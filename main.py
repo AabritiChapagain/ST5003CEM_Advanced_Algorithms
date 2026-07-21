@@ -2,6 +2,7 @@ from city import City
 from bst import BinarySearchTree
 from avl import AVLTree
 from hash_table import HashTable
+from min_heap import MinHeap
 
 
 def main():
@@ -9,6 +10,7 @@ def main():
     bst = BinarySearchTree()
     avl = AVLTree()
     hash_table = HashTable()
+    heap = MinHeap()
 
     cities = [
         City("Kathmandu", 27.7172, 85.3240, 1500000, 0),
@@ -73,7 +75,20 @@ def main():
     print("Hash Table after deletion:")
 
     hash_table.display()
+    
+    print("\n==========================")
+    print("Testing Min Heap")
+    print("==========================")
 
+    heap.display()
+    for city in cities:
+        heap.insert(city)
+    print("\nNearest city:")
+
+    nearest = heap.extract_min()
+
+    if nearest:
+        print(nearest)
 
 if __name__ == "__main__":
     main()
