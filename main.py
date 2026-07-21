@@ -1,7 +1,6 @@
 from city import City
 from bst import BinarySearchTree
 
-
 def main():
 
     bst = BinarySearchTree()
@@ -27,6 +26,11 @@ def main():
         print("City not found.")
 
     print("\n=== Cities in Alphabetical Order ===")
+    bst.inorder_traversal()
+
+    print("\nDeleting Pokhara...\n")
+    bst.delete("Pokhara")
+    print("Cities after deletion:\n")
     bst.inorder_traversal()
 
 if __name__ == "__main__":
