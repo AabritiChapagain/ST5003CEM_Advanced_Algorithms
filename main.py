@@ -3,7 +3,7 @@ from bst import BinarySearchTree
 from avl import AVLTree
 from hash_table import HashTable
 from min_heap import MinHeap
-
+from benchmark import benchmark_search
 
 def main():
 
@@ -89,6 +89,26 @@ def main():
 
     if nearest:
         print(nearest)
+    print("\n==========================")
+    print("Benchmark Results")
+    print("==========================")
 
+    benchmark_search(
+        "Binary Search Tree",
+        bst.search,
+        "Pokhara"
+    )
+
+    benchmark_search(
+        "AVL Tree",
+        avl.search,
+        "Pokhara"
+    )
+
+    benchmark_search(
+        "Hash Table",
+        hash_table.search,
+        "Pokhara"
+    )
 if __name__ == "__main__":
     main()
