@@ -114,7 +114,7 @@ def main():
         ("data/cities_10000.csv", 10000)
     ]
 
-    with open("benchmark_results.csv", "w", newline="") as file:
+    with open("task1/benchmark_results.csv", "w", newline="") as file:
 
         writer = csv.writer(file)
 
