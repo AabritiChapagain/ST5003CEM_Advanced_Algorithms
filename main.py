@@ -1,16 +1,22 @@
 from city import City
+from bst import BinarySearchTree
 
 
 def main():
-    city = City(
-        "Kathmandu",
-        27.7172,
-        85.3240,
-        1500000,
-        0
-    )
 
-    print(city)
+    bst = BinarySearchTree()
+
+    cities = [
+        City("Kathmandu", 27.7172, 85.3240, 1500000, 0),
+        City("Pokhara", 28.2096, 83.9856, 518000, 200),
+        City("Biratnagar", 26.4525, 87.2718, 242000, 390),
+        City("Lalitpur", 27.6644, 85.3188, 299000, 5)
+    ]
+
+    for city in cities:
+        bst.insert(city)
+
+    print("Cities inserted successfully into the Binary Search Tree.")
 
 
 if __name__ == "__main__":
