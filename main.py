@@ -6,6 +6,7 @@ from avl import AVLTree
 def main():
 
     bst = BinarySearchTree()
+    avl = AVLTree()      # <-- Create the AVL tree here
 
     cities = [
         City("Kathmandu", 27.7172, 85.3240, 1500000, 0),
@@ -19,7 +20,6 @@ def main():
         bst.insert(city)
 
     print("=== BST Search ===")
-
     result = bst.search("Pokhara")
 
     if result:
@@ -33,13 +33,20 @@ def main():
     print("Testing AVL Tree")
     print("==========================")
 
-    avl = AVLTree()
-
     for city in cities:
         avl.insert(city)
 
-    print("\nAVL Inorder:")
     avl.inorder_traversal()
+
+    print("\nSearching in AVL Tree...")
+
+    result = avl.search("Pokhara")
+
+    if result:
+        print("City Found:")
+        print(result)
+    else:
+        print("City not found.")
 
 
 if __name__ == "__main__":

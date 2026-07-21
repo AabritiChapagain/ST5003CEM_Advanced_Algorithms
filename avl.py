@@ -119,8 +119,26 @@ class AVLTree:
         self._inorder_recursive(self.root)
 
     def _inorder_recursive(self, node):
-
         if node is not None:
             self._inorder_recursive(node.left)
             print(node.city)
             self._inorder_recursive(node.right)
+
+    def search(self, city_name):
+        """
+        Search for a city by name.
+        """
+        return self._search_recursive(self.root, city_name)
+
+    def _search_recursive(self, node, city_name):
+
+        if node is None:
+            return None
+
+        if city_name == node.city.name:
+            return node.city
+
+        if city_name < node.city.name:
+            return self._search_recursive(node.left, city_name)
+
+        return self._search_recursive(node.right, city_name)
