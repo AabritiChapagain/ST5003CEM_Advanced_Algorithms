@@ -1,5 +1,7 @@
 from city import City
 from bst import BinarySearchTree
+from avl import AVLTree
+
 
 def main():
 
@@ -11,27 +13,34 @@ def main():
         City("Biratnagar", 26.4525, 87.2718, 242000, 390),
         City("Lalitpur", 27.6644, 85.3188, 299000, 5)
     ]
-    # Insert cities into the BST
+
+    # BST
     for city in cities:
-      bst.insert(city)
+        bst.insert(city)
 
     print("=== BST Search ===")
 
     result = bst.search("Pokhara")
 
     if result:
-        print("City Found:")
         print(result)
-    else:
-        print("City not found.")
 
-    print("\n=== Cities in Alphabetical Order ===")
+    print("\nBST Inorder:")
     bst.inorder_traversal()
 
-    print("\nDeleting Pokhara...\n")
-    bst.delete("Pokhara")
-    print("Cities after deletion:\n")
-    bst.inorder_traversal()
+    # AVL
+    print("\n==========================")
+    print("Testing AVL Tree")
+    print("==========================")
+
+    avl = AVLTree()
+
+    for city in cities:
+        avl.insert(city)
+
+    print("\nAVL Inorder:")
+    avl.inorder_traversal()
+
 
 if __name__ == "__main__":
     main()
