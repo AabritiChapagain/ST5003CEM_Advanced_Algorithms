@@ -1,12 +1,14 @@
 from city import City
 from bst import BinarySearchTree
 from avl import AVLTree
+from hash_table import HashTable
 
 
 def main():
 
     bst = BinarySearchTree()
-    avl = AVLTree()      # <-- Create the AVL tree here
+    avl = AVLTree()
+    hash_table = HashTable()
 
     cities = [
         City("Kathmandu", 27.7172, 85.3240, 1500000, 0),
@@ -47,14 +49,30 @@ def main():
         print(result)
     else:
         print("City not found.")
-    
-        print("\nDeleting Pokhara from AVL Tree...\n")
 
-    avl.delete("Pokhara")
+    # Hash Table
+    print("\n==========================")
+    print("Testing Hash Table")
+    print("==========================")
 
-    print("AVL after deletion:")
+    for city in cities:
+        hash_table.insert(city)
 
-    avl.inorder_traversal()
+    result = hash_table.search("Pokhara")
+
+    if result:
+        print("City Found:")
+        print(result)
+    else:
+        print("City not found.")
+
+    print("\nDeleting Pokhara...\n")
+
+    hash_table.delete("Pokhara")
+
+    print("Hash Table after deletion:")
+
+    hash_table.display()
 
 
 if __name__ == "__main__":
