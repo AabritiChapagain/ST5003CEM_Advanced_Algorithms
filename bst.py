@@ -43,3 +43,35 @@ class BinarySearchTree:
                 self._insert_recursive(current_node.right, city)
 
         # Ignore duplicate city names
+
+    def search(self, city_name):
+        """
+        Search for a city by name.
+        """
+        return self._search_recursive(self.root, city_name)
+
+    def _search_recursive(self, current_node, city_name):
+
+        if current_node is None:
+            return None
+
+        if city_name == current_node.city.name:
+            return current_node.city
+
+        if city_name < current_node.city.name:
+            return self._search_recursive(current_node.left, city_name)
+
+        return self._search_recursive(current_node.right, city_name)
+
+    def inorder_traversal(self):
+        """
+        Display cities in alphabetical order.
+        """
+        self._inorder_recursive(self.root)
+
+    def _inorder_recursive(self, current_node):
+
+        if current_node is not None:
+            self._inorder_recursive(current_node.left)
+            print(current_node.city)
+            self._inorder_recursive(current_node.right)
